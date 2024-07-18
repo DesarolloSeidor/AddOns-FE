@@ -1,0 +1,10 @@
+[
+  {
+    "Codigo": "00",
+    "Nombre": "Descuento no condicionado"
+  },
+  {
+    "Codigo": "01",
+    "Nombre": "Descuento condicionado"
+  }
+]

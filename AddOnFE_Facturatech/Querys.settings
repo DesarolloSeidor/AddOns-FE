@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AddOnFE_Facturatech" GeneratedClassName="Querys">
+  <Profiles />
+  <Settings>
+    <Setting Name="PARAMG" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Select * from "@FEDIAN_PARAMG"</Value>
+    </Setting>
+    <Setting Name="CargueMonitor" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Select 
+A0."Code", A0."U_ObjType" as "Tipo Objeto", A0."U_DocType" as "Tipo Documento", A1."Name" as "Documento DIAN", A0."U_Folio" as "Numero Documento", A0."U_Prefijo" as "Prefijo", A0."U_DocNum" as "Numero Interno", 
+A0."U_Status" as "Codigo Estado", A0."U_Resultado" as "Descripcion Estado", A0."U_ProcessID" as "ID Proceso", 
+A0."U_Fecha_Envio" as "Fecha de contabilizacion", A0."U_Hora_Envio" as "Hora de creacion", A0."U_Usuario_Envio" as "Usuario Envio", 
+A0."U_Det_Peticion" as "Detalle Peticion", A0."U_Respuesta_Int" as "Respuesta Integracion", A0."U_Archivo_PDF" as "Archivo PDF", A0."U_Enlace_XML" as "Archivo XML",
+A0."U_ID_Seguimiento" as "CUFE"
+From "@FEDIAN_MONITORLOG" A0
+Left Join "@FEDIAN_CODDOC" A1 On A0."U_DocType" = A1."Code"
+Where (A0."U_Fecha_Envio" Between '{0}' and '{1}' or IfNull(A0."U_Fecha_Envio",'') = '') and (A0."U_DocType" = '{2}' OR IfNull('{2}','')='') and (A0."U_Status" = '{3}' OR IfNull('{3}','')='')
+Order By Cast(A0."Code" as int)</Value>
+    </Setting>
+    <Setting Name="cmbTipodoc" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Select * from "@FEDIAN_CODDOC" Order By "Code"</Value>
+    </Setting>
+    <Setting Name="cmbEstado" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Select "U_Status", 
+Case 
+When "U_Status" = '201' Then 'Procesado' 
+When "U_Status" = '200' Then 'En Proceso' 
+When "U_Status" = '409' Then 'Error' 
+When "U_Status" = '405' Then 'Error'
+When "U_Status" = '404' Then 'Error' else 'En Proceso' End
+from "@FEDIAN_MONITORLOG"
+Where IfNull("U_Status",'') != ''
+Group By "U_Status"
+Order By "U_Status"</Value>
+    </Setting>
+    <Setting Name="MaxLog" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Select IFNull(Max(cast("Code" as Int)),0)+1 As "NextCode" From "@FEDIAN_MONITORLOG"</Value>
+    </Setting>
+    <Setting Name="ProcessStatus" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Select "Code", "U_ProcessID" as "ProcessID", "U_ID_Seguimiento" as "ID_Seguimiento", "U_Det_Peticion" as "Det_Peticion", "U_DocType" as "docType"
+From "@FEDIAN_MONITORLOG"
+Where (IfNull("U_Status",'') in ({0})) Or (IfNull("U_Status",'') = '' And IfNull(Cast("U_Archivo_PDF" as Nvarchar(2500)), '') = '' )</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,22 @@
+[
+  {
+    "Codigo": "1",
+    "Nombre": "Devolucion parcial de los bienes y/o no aceptacion parcial del servicio"
+  },
+  {
+    "Codigo": "2",
+    "Nombre": "Anulacion del documento soporte"
+  },
+  {
+    "Codigo": "3",
+    "Nombre": "Rebaja o descuento parcial o total"
+  },
+  {
+    "Codigo": "4",
+    "Nombre": "Ajuste de precio"
+  },
+  {
+    "Codigo": "5",
+    "Nombre": "Otros"
+  }
+]

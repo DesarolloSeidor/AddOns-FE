@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AddOnFE_Facturatech.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FileLog" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">FE_DIAN_LOG</Value>
+    </Setting>
+    <Setting Name="AddOnFE_Facturatech_FacturatechWS_SERVICES_FACTURATECH" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ws.facturatech.co/v2/demo/index.php?wsdl</Value>
+    </Setting>
+    <Setting Name="AddOnFE_Facturatech_facturatechWSdse_DOCUMENTO_SOPORTE_FACTURATECH" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://ws-dse.facturatech.co/v1/demo/?wsdl</Value>
+    </Setting>
+    <Setting Name="AddOnFE_Facturatech_FacturatechWSNC_SERVICES_NOMINA_FACTURATECH" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://ws-nomina.facturatech.co/v1/demo/index.php?wsdl</Value>
+    </Setting>
+    <Setting Name="TimerStatus" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">60000</Value>
+    </Setting>
+    <Setting Name="TimerResend" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">300000</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

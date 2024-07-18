@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:https://ws-nomina.facturatech.co/v1/demo/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:https://ws-nomina.facturatech.co/v1/demo/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:https://ws-nomina.facturatech.co/v1/demo/">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="uploadResponse">
+        <xsd:all>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="transactionID" type="xsd:string" />
+          <xsd:element name="error" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="documentStatusResponse">
+        <xsd:all>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="documentBase64" type="xsd:string" />
+          <xsd:element name="arDocument" type="xsd:string" />
+          <xsd:element name="message" type="xsd:string" />
+          <xsd:element name="messageError" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="downloadXMLResponse">
+        <xsd:all>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="documentBase64" type="xsd:string" />
+          <xsd:element name="arDocument" type="xsd:string" />
+          <xsd:element name="message" type="xsd:string" />
+          <xsd:element name="messageError" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="downloadPDFResponse">
+        <xsd:all>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="documentBase64" type="xsd:string" />
+          <xsd:element name="message" type="xsd:string" />
+          <xsd:element name="messageError" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="downloadCUNEResponse">
+        <xsd:all>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="message" type="xsd:string" />
+          <xsd:element name="resourceData" type="xsd:string" />
+          <xsd:element name="messageError" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="FtechAction.uploadDocumentRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="xmlBase64" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.uploadDocumentResponse">
+    <wsdl:part name="return" type="tns:uploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.documentStatusRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="transaccionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.documentStatusResponse">
+    <wsdl:part name="return" type="tns:documentStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.downloadXMLRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="prefix" type="xsd:string" />
+    <wsdl:part name="number" type="xsd:integer" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.downloadXMLResponse">
+    <wsdl:part name="return" type="tns:downloadXMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.downloadPDFRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="prefix" type="xsd:string" />
+    <wsdl:part name="number" type="xsd:integer" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.downloadPDFResponse">
+    <wsdl:part name="return" type="tns:downloadPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.downloadCUNERequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="prefix" type="xsd:string" />
+    <wsdl:part name="number" type="xsd:integer" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.downloadCUNEResponse">
+    <wsdl:part name="return" type="tns:downloadCUNEResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SERVICES-NOMINA-FACTURATECHPortType">
+    <wsdl:operation name="FtechAction.uploadDocument">
+      <documentation>La funciÃ³n recibe el usuario, password con formato hash 256, xml en base 64, y responde el folio de transacciÃ³n del comprobante</documentation>
+      <wsdl:input message="tns:FtechAction.uploadDocumentRequest" />
+      <wsdl:output message="tns:FtechAction.uploadDocumentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.documentStatus">
+      <documentation>La funciÃ³n recibe el usuario, password en formato hash 256, transacciÃ³nId enviado de Ftech, y responde el estatus del comprobante</documentation>
+      <wsdl:input message="tns:FtechAction.documentStatusRequest" />
+      <wsdl:output message="tns:FtechAction.documentStatusResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.downloadXML">
+      <documentation>Funcion para la recuperaciÃ³n del archivo XML</documentation>
+      <wsdl:input message="tns:FtechAction.downloadXMLRequest" />
+      <wsdl:output message="tns:FtechAction.downloadXMLResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.downloadPDF">
+      <documentation>Funcion para la descarga del archivo PDF</documentation>
+      <wsdl:input message="tns:FtechAction.downloadPDFRequest" />
+      <wsdl:output message="tns:FtechAction.downloadPDFResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.downloadCUNE">
+      <documentation>Funcion para la descarga del CUNE</documentation>
+      <wsdl:input message="tns:FtechAction.downloadCUNERequest" />
+      <wsdl:output message="tns:FtechAction.downloadCUNEResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SERVICES-NOMINA-FACTURATECHBinding" type="tns:SERVICES-NOMINA-FACTURATECHPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="FtechAction.uploadDocument">
+      <soap:operation soapAction="urn:https://ws-nomina.facturatech.co/v1/demo/#FtechAction.uploadDocument" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws-nomina.facturatech.co/v1/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws-nomina.facturatech.co/v1/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.documentStatus">
+      <soap:operation soapAction="urn:https://ws-nomina.facturatech.co/v1/demo/#FtechAction.documentStatus" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws-nomina.facturatech.co/v1/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws-nomina.facturatech.co/v1/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.downloadXML">
+      <soap:operation soapAction="urn:https://ws-nomina.facturatech.co/v1/demo/#FtechAction.downloadXML" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws-nomina.facturatech.co/v1/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws-nomina.facturatech.co/v1/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.downloadPDF">
+      <soap:operation soapAction="urn:https://ws-nomina.facturatech.co/v1/demo/#FtechAction.downloadPDFResponse" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws-nomina.facturatech.co/v1/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws-nomina.facturatech.co/v1/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.downloadCUNE">
+      <soap:operation soapAction="urn:https://ws-nomina.facturatech.co/v1/demo/#FtechAction.downloadCUNEResponse" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws-nomina.facturatech.co/v1/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws-nomina.facturatech.co/v1/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SERVICES-NOMINA-FACTURATECH">
+    <wsdl:port name="SERVICES-NOMINA-FACTURATECHPort" binding="tns:SERVICES-NOMINA-FACTURATECHBinding">
+      <soap:address location="https://ws-nomina.facturatech.co/v1/demo/index.php?wsdl" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

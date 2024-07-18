@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:https://ws.facturatech.co/v2/demo/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:https://ws.facturatech.co/v2/demo/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:https://ws.facturatech.co/v2/demo/">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="response_ws">
+        <xsd:all>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="success" type="xsd:string" />
+          <xsd:element name="transaccionID" type="xsd:string" />
+          <xsd:element name="error" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="response_docs">
+        <xsd:all>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="success" type="xsd:string" />
+          <xsd:element name="status" type="xsd:string" />
+          <xsd:element name="error" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="response_xml">
+        <xsd:all>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="success" type="xsd:string" />
+          <xsd:element name="resourceData" type="xsd:string" />
+          <xsd:element name="error" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="response_pdf">
+        <xsd:all>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="success" type="xsd:string" />
+          <xsd:element name="resourceData" type="xsd:string" />
+          <xsd:element name="error" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="response_cufe">
+        <xsd:all>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="success" type="xsd:string" />
+          <xsd:element name="resourceData" type="xsd:string" />
+          <xsd:element name="error" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="response_qr">
+        <xsd:all>
+          <xsd:element name="code" type="xsd:string" />
+          <xsd:element name="success" type="xsd:string" />
+          <xsd:element name="resourceData" type="xsd:string" />
+          <xsd:element name="error" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="FtechAction.uploadInvoiceFileRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="xmlBase64" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.uploadInvoiceFileResponse">
+    <wsdl:part name="return" type="tns:response_ws" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.documentStatusFileRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="transaccionID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.documentStatusFileResponse">
+    <wsdl:part name="return" type="tns:response_docs" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.downloadXMLFileRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="prefijo" type="xsd:string" />
+    <wsdl:part name="folio" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.downloadXMLFileResponse">
+    <wsdl:part name="return" type="tns:response_xml" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.downloadPDFFileRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="prefijo" type="xsd:string" />
+    <wsdl:part name="folio" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.downloadPDFFileResponse">
+    <wsdl:part name="return" type="tns:response_pdf" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.getCUFEFileRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="prefijo" type="xsd:string" />
+    <wsdl:part name="folio" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.getCUFEFileResponse">
+    <wsdl:part name="return" type="tns:response_cufe" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.getQRFileRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="prefijo" type="xsd:string" />
+    <wsdl:part name="folio" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.getQRFileResponse">
+    <wsdl:part name="return" type="tns:response_qr" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.getQRImageFileRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="prefijo" type="xsd:string" />
+    <wsdl:part name="folio" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.getQRImageFileResponse">
+    <wsdl:part name="return" type="tns:response_qr" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.uploadInvoiceFileLayoutRequest">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+    <wsdl:part name="layout" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="FtechAction.uploadInvoiceFileLayoutResponse">
+    <wsdl:part name="return" type="tns:response_ws" />
+  </wsdl:message>
+  <wsdl:portType name="SERVICES-FACTURATECHPortType">
+    <wsdl:operation name="FtechAction.uploadInvoiceFile">
+      <documentation>La funciÃ³n recibe el usuario, password con formato hash 256, xml en base 64, y responde el folio de transacciÃ³n del comprobante</documentation>
+      <wsdl:input message="tns:FtechAction.uploadInvoiceFileRequest" />
+      <wsdl:output message="tns:FtechAction.uploadInvoiceFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.documentStatusFile">
+      <documentation>La funciÃ³n recibe el usuario, password en formato hash 256, transacciÃ³nId, y responde el estatus del comprobante</documentation>
+      <wsdl:input message="tns:FtechAction.documentStatusFileRequest" />
+      <wsdl:output message="tns:FtechAction.documentStatusFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.downloadXMLFile">
+      <documentation>La funcion recibe el usuario, password en formato hash 256, prefijo , folio del documento, y responde el comprobante XML en formato base64</documentation>
+      <wsdl:input message="tns:FtechAction.downloadXMLFileRequest" />
+      <wsdl:output message="tns:FtechAction.downloadXMLFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.downloadPDFFile">
+      <documentation>La funcion recibe el usuario, password en formato hash 256, prefijo , folio del documento, y responde el comprobante PDF en formato base64</documentation>
+      <wsdl:input message="tns:FtechAction.downloadPDFFileRequest" />
+      <wsdl:output message="tns:FtechAction.downloadPDFFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.getCUFEFile">
+      <documentation>La funcion recibe el usuario, password en formato hash 256, prefijo , folio del documento, y responde el CUFE del documento firmado</documentation>
+      <wsdl:input message="tns:FtechAction.getCUFEFileRequest" />
+      <wsdl:output message="tns:FtechAction.getCUFEFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.getQRFile">
+      <documentation>La funcion recibe el usuario, password en formato hash 256, prefijo , folio del documento, y responde el QR del documento firmado</documentation>
+      <wsdl:input message="tns:FtechAction.getQRFileRequest" />
+      <wsdl:output message="tns:FtechAction.getQRFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.getQRImageFile">
+      <documentation>La funcion recibe el usuario, password en formato hash 256, prefijo , folio del documento, y responde una imagen con el cÃ³digo QR del documento firmado</documentation>
+      <wsdl:input message="tns:FtechAction.getQRImageFileRequest" />
+      <wsdl:output message="tns:FtechAction.getQRImageFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.uploadInvoiceFileLayout">
+      <documentation>La funciÃ³n recibe el usuario, password con formato hash 256, layout y responde el folio de transacciÃ³n del comprobante</documentation>
+      <wsdl:input message="tns:FtechAction.uploadInvoiceFileLayoutRequest" />
+      <wsdl:output message="tns:FtechAction.uploadInvoiceFileLayoutResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SERVICES-FACTURATECHBinding" type="tns:SERVICES-FACTURATECHPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="FtechAction.uploadInvoiceFile">
+      <soap:operation soapAction="urn:https://ws.facturatech.co/v2/demo/#FtechAction.uploadInvoiceFile" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.documentStatusFile">
+      <soap:operation soapAction="urn:https://ws.facturatech.co/v2/demo/#FtechAction.documentStatusFile" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.downloadXMLFile">
+      <soap:operation soapAction="urn:https://ws.facturatech.co/v2/demo/#FtechAction.downloadXMLFile" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.downloadPDFFile">
+      <soap:operation soapAction="urn:https://ws.facturatech.co/v2/demo/#FtechAction.downloadPDFFile" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.getCUFEFile">
+      <soap:operation soapAction="urn:https://ws.facturatech.co/v2/demo/#FtechAction.getCUFEFile" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.getQRFile">
+      <soap:operation soapAction="urn:https://ws.facturatech.co/v2/demo/#FtechAction.getQRFile" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.getQRImageFile">
+      <soap:operation soapAction="urn:https://ws.facturatech.co/v2/demo/#FtechAction.getQRImageFile" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FtechAction.uploadInvoiceFileLayout">
+      <soap:operation soapAction="urn:https://ws.facturatech.co/v2/demo/#FtechAction.uploadInvoiceFileLayout" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:https://ws.facturatech.co/v2/demo/" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SERVICES-FACTURATECH">
+    <wsdl:port name="SERVICES-FACTURATECHPort" binding="tns:SERVICES-FACTURATECHBinding">
+      <soap:address location="https://ws.facturatech.co/v2/demo/index.php?wsdl" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

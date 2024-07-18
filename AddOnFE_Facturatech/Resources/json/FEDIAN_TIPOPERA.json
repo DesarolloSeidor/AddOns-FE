@@ -1,0 +1,38 @@
+[
+  {
+    "Codigo": "10",
+    "Nombre": "Estandar"
+  },
+  {
+    "Codigo": "09",
+    "Nombre": "AIU"
+  },
+  {
+    "Codigo": "11",
+    "Nombre": "Mandatos"
+  },
+  {
+    "Codigo": "12",
+    "Nombre": "Transporte"
+  },
+  {
+    "Codigo": "13",
+    "Nombre": "Cambiario"
+  },
+  {
+    "Codigo": "20",
+    "Nombre": "Nota Credito que referencia una factura electronica *"
+  },
+  {
+    "Codigo": "22",
+    "Nombre": "Nota Credito sin referencia a facturas"
+  },
+  {
+    "Codigo": "30",
+    "Nombre": "Nota Debito que referencia una factura electronica."
+  },
+  {
+    "Codigo": "32",
+    "Nombre": "Nota Debito sin referencia a facturas"
+  }
+]
